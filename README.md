@@ -43,7 +43,7 @@ The application uses the ExchangeRate-API to fetch real-time exchange rates. To 
 
 JavaScript
 
-const apiKey = '';
+const apiKey = 'fca_live_UYmKwZCBsmejCSJDKUGDayt1rHkFbn9YgP6nbp80';
 
 ## Contributing
 Contributions are welcome! Please feel free to submit a Pull Request.
