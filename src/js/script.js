@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const swapButton = document.getElementById('swap-currencies');
     const conversionForm = document.getElementById('conversion-form');
 
-    // Event listener for form submission
+    // Fetch and populate currency options
+    fetchCurrencies();
+
+    // for form submission
     conversionForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const amountSend = parseFloat(amountSendInput.value);
@@ -29,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Event listener for swapping currencies
+    // for swapping currencies
     swapButton.addEventListener('click', () => {
         const tempCurrency = currencySendSelect.value;
         currencySendSelect.value = currencyReceiveSelect.value;
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         amountReceiveInput.value = '';
     });
 
-    // Function to fetch exchange rate
+    //to fetch exchange rate
     async function fetchExchangeRate(currencySend, currencyReceive) {
         const apiKey = 'your_api_key_here';
         const url = `https://api.exchangerate-api.com/v4/latest/${currencySend}`;
@@ -49,5 +52,30 @@ document.addEventListener('DOMContentLoaded', () => {
             throw new Error('Exchange rate not found.');
         }
         return exchangeRate;
+    }
+
+    // to fetch available currencies
+    async function fetchCurrencies() {
+        const apiKey = 'your_api_key_here';
+        const url = `https://api.exchangerate-api.com/v4/latest/USD`;
+        const response = await fetch(url);
+        const data = await response.json();
+        const currencies = Object.keys(data.rates);
+        populateCurrencyOptions(currencies);
+    }
+
+    //  populate currency dropdowns
+    function populateCurrencyOptions(currencies) {
+        currencies.forEach(currency => {
+            const optionSend = document.createElement('option');
+            optionSend.value = currency;
+            optionSend.textContent = currency;
+            currencySendSelect.appendChild(optionSend);
+
+            const optionReceive = document.createElement('option');
+            optionReceive.value = currency;
+            optionReceive.textContent = currency;
+            currencyReceiveSelect.appendChild(optionReceive);
+        });
     }
 });
