@@ -1,0 +1,15 @@
+{
+  "name": "exchangewaves",
+  "version": "1.0.0",
+  "description": "A currency conversion web application",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server ./src -o",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brian Shifoko",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
+}
