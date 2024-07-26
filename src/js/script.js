@@ -1,5 +1,3 @@
-// scripts.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const amountSendInput = document.getElementById('amount-send');
     const amountReceiveInput = document.getElementById('amount-receive');
@@ -43,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //to fetch exchange rate
     async function fetchExchangeRate(currencySend, currencyReceive) {
-        const apiKey = 'your_api_key_here';
+        const apiKey = 'fca_live_UYmKwZCBsmejCSJDKUGDayt1rHkFbn9YgP6nbp80';
         const url = `https://api.exchangerate-api.com/v4/latest/${currencySend}`;
         const response = await fetch(url);
         const data = await response.json();
@@ -56,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // to fetch available currencies
     async function fetchCurrencies() {
-        const apiKey = 'your_api_key_here';
+        const apiKey = 'fca_live_UYmKwZCBsmejCSJDKUGDayt1rHkFbn9YgP6nbp80';
         const url = `https://api.exchangerate-api.com/v4/latest/USD`;
         const response = await fetch(url);
         const data = await response.json();
